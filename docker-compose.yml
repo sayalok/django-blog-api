@@ -1,7 +1,7 @@
 version: '1.0'
 services:
   api:
-    container_name: django_api
+    container_name: api
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,7 +13,7 @@ services:
       - db
 
   db:
-    container_name: django_db
+    container_name: db
     image: mysql:5.7.22
     restart: always
     environment: 
@@ -23,3 +23,5 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - .dbdata:/var/lib/mysql
+    ports:
+      - 33066:3306
